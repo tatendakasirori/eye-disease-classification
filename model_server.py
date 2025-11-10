@@ -2,9 +2,13 @@ import tensorflow as tf
 import numpy as np
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from PIL import Image
 
 app = Flask(__name__)
+CORS(app, origins=['http://localhost:3000'], 
+     methods=['GET', 'POST'],
+     allow_headers=['Content-Type'])
 
 # Define image dimensions (must match the dimensions used during training)
 IMG_WIDTH = 128
@@ -56,8 +60,16 @@ def predict_preprocessed_image(preprocessed_img_tensor):
     return predicted_class_name, confidence, None
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST', 'OPTIONS'])
 def predict():
+    if request.method == 'OPTIONS':
+        # Handle preflight request
+        response = jsonify({'status': 'ok'})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Methods', 'POST')
+        return response
+
     if 'image' not in request.files:
         return jsonify({'error': 'No image file provided'}), 400
 
@@ -72,12 +84,18 @@ def predict():
         print(f"IMAGE PREDICTED TO BE: {predicted_class}")
 
         if error:
-            return jsonify({'error': error}), 500
+            response = jsonify({'error': error})
+            response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+            return response, 500
 
-        return jsonify({'predicted_class': predicted_class, 'confidence': confidence})
+        response = jsonify({'predicted_class': predicted_class, 'confidence': confidence})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        return response
 
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        response = jsonify({'error': str(e)})
+        response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+        return response, 500
 
 @app.route('/')
 def index():
@@ -89,5 +107,5 @@ if __name__ == '__main__':
     # And Pillow for image handling: pip install Pillow
     # Place the 'eye_disease_classifier.keras' file in the same directory as this script
     # Then run this script from your terminal: python your_script_name.py
-    # The server will start on http://127.0.0.1:5000/
-    app.run(debug=True) # Set debug=False in production
+    # The server will start on http://127.0.0.1:5001/
+    app.run(debug=True, port=5001) # Changed to port 5001 to avoid conflict with AirPlay
