@@ -56,7 +56,7 @@ A full-stack web application that uses machine learning to classify retinal dise
 
 ```powershell
 # 1. Clone or navigate to project
-cd "C:\Users\tkasiror\Desktop\AI retinal scan\eye-disease-classification"
+cd "https://github.com/tatendakasirori/eye-disease-classification"
 
 # 2. Install backend dependencies
 pip install flask flask-cors tensorflow pillow numpy
@@ -151,7 +151,7 @@ All should show version numbers. If any command is not found, reinstall the soft
 ### Step 1: Navigate to Project Directory
 
 ```powershell
-cd "C:\Users\tkasiror\Desktop\AI retinal scan\eye-disease-classification"
+cd "eye-disease-classification"
 ```
 
 ### Step 2: Install Backend Dependencies
@@ -240,7 +240,7 @@ The application requires **two servers** running simultaneously: Flask backend a
 Open PowerShell in the **project root directory**:
 
 ```powershell
-# Make sure you're in: C:\Users\tkasiror\Desktop\AI retinal scan\eye-disease-classification
+# Make sure you're in: eye-disease-classification
 
 python model_server.py
 ```
@@ -260,7 +260,7 @@ Open a **new** PowerShell window:
 
 ```powershell
 # Navigate to client folder
-cd "C:\Users\tkasiror\Desktop\AI retinal scan\eye-disease-classification\client"
+cd "eye-disease-classification\client"
 
 # Start development server
 npm start
@@ -296,54 +296,14 @@ You should see the Eye Disease Classification dashboard with:
 
 ## 📸 Screenshots
 
-### Dashboard - Upload Interface
-
-*Add screenshot here showing:*
-- File upload area
-- Drag-and-drop zone
-- Browse files button
-- Analyze button
-
-```
-[Placeholder for: client-dashboard-upload.png]
-```
-
 ### Result Display - Normal Eye
-
-*Add screenshot here showing:*
-- Uploaded image preview
-- "Normal" classification
-- Confidence percentage (e.g., 95%)
-- Green confidence bar
-
-```
-[Placeholder for: result-normal.png]
-```
+![Normal](https://github.com/user-attachments/assets/6528e9e7-bf1f-46f7-8e3d-de8329121599)
 
 ### Result Display - Diseased Eye
+![cataract](https://github.com/user-attachments/assets/0a4180e1-ed11-46ac-bdc4-2ade4909e5d1)
 
-*Add screenshot here showing:*
-- Uploaded image preview
-- Disease classification (e.g., "Cataract")
-- Confidence percentage
-- Color-coded confidence bar
-
-```
-[Placeholder for: result-disease.png]
-```
 
 ### Error Handling
-
-*Add screenshot here showing:*
-- Invalid file format error
-- File size error
-- Server connection error
-
-```
-[Placeholder for: error-handling.png]
-```
-
----
 
 ## 🔌 API Documentation
 
@@ -788,19 +748,6 @@ Display Results → Visual Feedback
 
 **Overall Accuracy**: ~95%
 
-**Per-Class Metrics**:
-
-| Class | Accuracy | Sensitivity | Specificity | Precision |
-|-------|----------|-------------|-------------|-----------|
-| Cataract | XX% | XX% | XX% | XX% |
-| Diabetic Retinopathy | XX% | XX% | XX% | XX% |
-| Glaucoma | XX% | XX% | XX% | XX% |
-| Normal | XX% | XX% | XX% | XX% |
-
-**AUC-ROC Score**: [Score]
-
-**F1 Score**: [Score]
-
 ### Model Limitations
 
 ⚠️ **Important Limitations:**
@@ -958,7 +905,7 @@ Error loading model: [Errno 2] No such file or directory:
 dir eye_disease_classifier.keras
 
 # Run Flask from correct directory
-cd "C:\Users\tkasiror\Desktop\AI retinal scan\eye-disease-classification"
+cd "eye-disease-classification"
 python model_server.py
 ```
 
