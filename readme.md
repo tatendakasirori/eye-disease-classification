@@ -65,6 +65,7 @@ pip install flask flask-cors tensorflow pillow numpy
 cd client
 npm install
 cd ..
+['localhost', '127.0.0.1', '.localhost']
 
 # 4. Terminal 1: Start backend
 python model_server.py
